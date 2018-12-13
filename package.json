@@ -1,0 +1,29 @@
+{
+  "name": "yareyare_backend",
+  "version": "1.0.0",
+  "description": "Back-end of a todo list app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevindsteeleii/YareYare_backend.git"
+  },
+  "author": "Kevin D. Steele II",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevindsteeleii/YareYare_backend/issues"
+  },
+  "homepage": "https://github.com/kevindsteeleii/YareYare_backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "sequelize": "^4.42.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
+  }
+}
