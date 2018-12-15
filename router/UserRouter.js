@@ -1,6 +1,6 @@
-const express = require('express'),
-  router = express.Router(),
-  userController = require('../controllers/UserController')
+   const express = require('express'),
+			    router = express.Router(),
+	userController = require('../controllers/UserController')
 
 router
 	.route('/signup')
@@ -8,6 +8,12 @@ router
 		userController.newUser(req.body.user)
 		.then(user => res.json(user))
 	})
+
+router
+	.route('/:id')
+	.get((req, res) => {
+		userController.showUser(req.params.id).then(user => res.json(user))
+	})  
 
 router
 	.route('/')

@@ -1,7 +1,8 @@
 const express = require('express'),
        router = express.Router()
         User = require('../models').User,
-         jwt = require('jsonwebtoken')
+         jwt = require('jsonwebtoken'),
+         SECRET =  process.env.SECRET || 'secret'
 
 router
   .post('/login', (req, res, next) => {
@@ -17,7 +18,7 @@ router
       } else if (!user.validPass(req.body.user.password)) {
         res.status(401).send('Invalid password.')
       } else {
-        jwt.sign({ user }, 'secret', /*{ expiresIn: '30m' }, */(err, token) => {
+        jwt.sign({ user }, SECRET, /*{ expiresIn: '30m' }, */(err, token) => {
           if (token) {
             res.json({ token, user })
           } else {

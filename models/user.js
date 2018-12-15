@@ -28,6 +28,19 @@ module.exports = (sequelize, DataTypes) => {
           len: [7, 254]
         }
       },
+      status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'user',
+        validate: {
+          validStatus(value){
+            let validStatus = ['user', 'admin']
+            if (!validStatus.includes(value)) {
+              throw new Error('Invalid user status. Must be an admin or user.')
+            }
+          }
+        }
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
