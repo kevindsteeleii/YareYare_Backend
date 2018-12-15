@@ -1,8 +1,8 @@
-const express = require('express'),
-       router = express.Router()
-        User = require('../models').User,
-         jwt = require('jsonwebtoken'),
-         SECRET =  process.env.SECRET || 'secret'
+          const express = require('express'),
+                 router = express.Router()
+                   User = require('../models').User,
+                    jwt = require('jsonwebtoken'),
+                 SECRET =  process.env.SECRET || 'secret'
 
 router
   .post('/login', (req, res, next) => {

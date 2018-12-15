@@ -2,9 +2,7 @@
            router = express.Router(),
    taskController = require('../controllers/TaskController'),
       verifyToken = require('../middleware/middleware').verifyToken,
-  authVerifyToken = require('../middleware/middleware').authVerifyToken,
-              jwt = require('jsonwebtoken'),
-           SECRET =  process.env.SECRET || 'secret'
+  authVerifyToken = require('../middleware/middleware').authVerifyToken
 
 /* *NOTES: About fetches that cause mutations from the front end
     the requests must use specific headers
@@ -13,7 +11,7 @@
       'Content-Type': 'application/json',
       Authorization: 'Bearer <token-goes-here>'
     }
-    
+
 */
 /* and remember it must be JSON
  {

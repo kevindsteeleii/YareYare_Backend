@@ -12,5 +12,16 @@ module.exports = {
   },
   showUser(id) {
     return User.findByPk(id)
+  },
+  editUser(id, userPatch){
+    return User.findByPk(id)
+    .then(user => {
+      user.set({ ...userPatch })
+      return user.save()
+    })
+  },
+  removeUser(id) {
+    return User.findByPk(id)
+    .then(user => user.destroy())
   }
 }
