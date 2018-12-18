@@ -7,21 +7,6 @@
 	authVerifyToken = require('../middleware/middleware').authVerifyToken
 
 router
-	.route('/signup')
-	.post((req, res) => {
-		userController.newUser(req.body.user)
-		.then(user => {
-			jwt.sign({ user }, SECRET, (err, token) => {
-				if (token) {
-					res.json({ token, user})
-				} else {
-					res.status(412).json(err)
-				}
-			})
-		})
-	})
-
-router
 	.route('/:id/edit')
 	.patch(verifyToken, (req, res) => {
 		authVerifyToken(req, res, req.token, editUser)

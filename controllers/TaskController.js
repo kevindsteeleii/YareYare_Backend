@@ -3,6 +3,15 @@ const Sequelize = require('sequelize'),
            Task = require('../models').Task
 
 module.exports = {
+  getTasks(userId){
+    return Task.findAll({
+      where: {
+        UserId: {
+          [Op.eq]: userId
+        }
+      }
+    }).then(tasks => tasks)
+  },
   createTask(userId, taskObj){
     const newTask = Task.build({
       ...taskObj, UserId: userId

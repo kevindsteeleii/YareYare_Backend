@@ -1,6 +1,7 @@
           const express = require('express'),
                  router = express.Router()
                    User = require('../models').User,
+         userController = require('../controllers/UserController'),
                     jwt = require('jsonwebtoken'),
                  SECRET =  process.env.SECRET || 'secret'
 
@@ -28,5 +29,19 @@ router
       }
     }).catch(next)
   })
+
+  router
+	.post('/signup',(req, res) => {
+		userController.newUser(req.body.user)
+		.then(user => {
+			jwt.sign({ user }, SECRET, (err, token) => {
+				if (token) {
+					res.json({ token, user})
+				} else {
+					res.status(412).json(err)
+				}
+			})
+		})
+	})
 
   module.exports = router

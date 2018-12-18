@@ -25,6 +25,11 @@
 */
 
 router
+  .get('/byUser/:userId' , verifyToken, (req, res) => {
+    authVerifyToken(req, res, req.token, getTasks)
+  })
+
+router
   .route('/:id/edit')
   .patch(verifyToken, (req, res) => {
     authVerifyToken(req, res, req.token, editTask)
@@ -50,6 +55,11 @@ function createTask(req, res) {
   taskController.createTask(req.body.data.id, req.body.data.task)
   .then(task => res.json(task))
 } 
+
+function getTasks(req, res) {
+  taskController.getTasks(req.params.userId)
+  .then(tasks => res.json(tasks))
+}
 
 function removeTask(req, res){
   taskController.removeTask(req.params.id)
